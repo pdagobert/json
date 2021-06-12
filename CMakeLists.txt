@@ -10,9 +10,11 @@ project(nlohmann_json VERSION 3.9.1 LANGUAGES CXX)
 ## MAIN_PROJECT CHECK
 ## determine if nlohmann_json is built as a subproject (using add_subdirectory) or if it is the main project
 ##
-set(MAIN_PROJECT OFF)
-if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-  set(MAIN_PROJECT ON)
+if (NOT DEFINED MAIN_PROJECT)
+  set(MAIN_PROJECT OFF)
+  if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+    set(MAIN_PROJECT ON)
+  endif()
 endif()
 
 ##
